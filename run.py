@@ -26,33 +26,56 @@ def get_review():
     1 is bad, 5 is good.
     """
     # second screen
-    print("Please answer three questions below:")
-    print("For each question give a point from 1 to 5, where 1 is bad and 5 is good")
+    while True:
+        print("Please give points from 1 to 5 to each kind of service below.")
+        print("1 is bad, 5 is good, separated by commas")
+        data_str = input("Food, stuff, cleanness, atmosphere:\n")
 
-    data_str_food = int(input("How tasty was the food?\n"))
-    validate_data(data_str_food)
-    data_str_service = int(input("How friendly was our staff?\n"))
-    validate_data(data_str_service)
-    data_str_clean = int(input("How clean is our cafe?\n"))
-    validate_data(data_str_clean)
-    data_str_vibe = int(input("How do you like the atmosphere?\n"))
-    validate_data(data_str_vibe)
+        review_data = data_str.split(",")
+
+        if validate_data(review_data):
+            break
+    
+    return review_data
     
 
-def validate_data(value):
+    # print("Please answer three questions below:")
+    # print("For each question give a point from 1 to 5, where 1 is bad and 5 is good")
+
+    # data_str_food = int(input("How tasty was the food?\n"))
+    # validate_data(data_str_food)
+    # data_str_service = int(input("How friendly was our staff?\n"))
+    # validate_data(data_str_service)
+    # data_str_clean = int(input("How clean is our cafe?\n"))
+    # validate_data(data_str_clean)
+    # data_str_vibe = int(input("How do you like the atmosphere?\n"))
+    # validate_data(data_str_vibe)
+
+
+
+
+def validate_data(values):
     """
     Inside the try converts all string values into integers.
     Raises ValueError if strings cannot be converted into int,
     or if the given point higher than 5.
     """
     try:
-        if value > 5:
-            raise ValueError(
-                f"Points from 1 to 5 required, you provided {value}"
-            )
+        [int(value) for value in values]
+        for value in values:
+            if int(value) > 5:
+                raise ValueError(
+                    f"Points from 1 to 5 required, you gave {int(value)}"
+                )
+            elif len(values) != 4:
+                raise ValueError(
+                    f"4 points are required, you entered {len(values)}"
+                )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
+        return False
 
+    return True
 
 # first screen
 print("Thank you for visiting cafe 'Ciao'")
