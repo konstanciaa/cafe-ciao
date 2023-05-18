@@ -29,12 +29,30 @@ def get_review():
     print("Please answer three questions below:")
     print("For each question give a point from 1 to 5, where 1 is bad and 5 is good")
 
-    data_str_food = input("How tasty was the food?\n")
-    data_str_service = input("How friendly was our staff?\n")
-    data_str_clean = input("How clean is our cafe?\n")
-    data_str_vibe = input("How do you like the atmosphere?\n")
-    print(f"Your review is {data_str_food}")
+    data_str_food = int(input("How tasty was the food?\n"))
+    validate_data(data_str_food)
+    data_str_service = int(input("How friendly was our staff?\n"))
+    validate_data(data_str_service)
+    data_str_clean = int(input("How clean is our cafe?\n"))
+    validate_data(data_str_clean)
+    data_str_vibe = int(input("How do you like the atmosphere?\n"))
+    validate_data(data_str_vibe)
     
+
+def validate_data(value):
+    """
+    Inside the try converts all string values into integers.
+    Raises ValueError if strings cannot be converted into int,
+    or if the given point higher than 5.
+    """
+    try:
+        if value > 5:
+            raise ValueError(
+                f"Points from 1 to 5 required, you provided {value}"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+
 
 # first screen
 print("Thank you for visiting cafe 'Ciao'")
