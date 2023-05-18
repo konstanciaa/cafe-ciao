@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+from statistics import mean
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -29,7 +30,7 @@ def get_review():
     # 2nd screen
     while True:
         print("Answer three questions below:")
-        print("For each question give a point from 1 to 5, where 1 is bad and 5 is good")
+        print("For each question give a point from 1 to 5, where 1 is bad and 5 is good\n")
 
         data_str_food = input("How tasty was the food?\n")
         if validate_data(data_str_food):
@@ -76,12 +77,29 @@ def update_review_worksheet(data):
     review_worksheet = SHEET_C.worksheet("review")
     review_worksheet.append_row(data)
     # 3rd screen
-    print("Thank you for your review!\nWe'll be happy if you answer one more question ;)")
+    average = mean(data)
+    print(f"Your review: {round(average,1)}")
+    print("Thank you!")
+    
+    return round(average,1)
+
+
+        
+            
+
+def main():
+    """
+    Run all program functions
+    """
+    data = get_review()
+    review_data = [int(num) for num in data]
+    update_review_worksheet(review_data)
+    # average_review = update_review_worksheet()
+
 
 
 # 1st screen
-print("Thank you for visiting cafe 'Ciao'")
-print("Please take a few moments to leave us your review. It will help us to improve our service.")
-data = get_review()
-review_data = [int(num) for num in data]
-update_review_worksheet(review_data)
+print("Thank you for visiting cafe 'Ciao'\n")
+print("Please take a few moments to leave us your review.")
+print("It will help us to improve our service.\n")
+main()
