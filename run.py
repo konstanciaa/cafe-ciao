@@ -26,7 +26,7 @@ def get_review():
     1 is bad, 5 is good.
     Return list of integers
     """
-    # second screen
+    # 2nd screen
     while True:
         print("Answer three questions below:")
         print("For each question give a point from 1 to 5, where 1 is bad and 5 is good")
@@ -43,8 +43,8 @@ def get_review():
 
             
     review_data = []
-    review_data = [int(data_str_food), int(data_str_service), int(data_str_clean), int(data_str_vibe)]
-    print(review_data)
+    review_data = [data_str_food, data_str_service, data_str_clean, data_str_vibe]
+    
     return review_data
 
 
@@ -69,9 +69,19 @@ def validate_data(value):
     return True
     
 
+def update_review_worksheet(data):
+    """
+    Update review worksheet, add new row with the list data provided
+    """
+    review_worksheet = SHEET_C.worksheet("review")
+    review_worksheet.append_row(data)
+    # 3rd screen
+    print("Thank you for your review!\nWe'll be happy if you answer one more question ;)")
 
 
-# first screen
+# 1st screen
 print("Thank you for visiting cafe 'Ciao'")
 print("Please take a few moments to leave us your review. It will help us to improve our service.")
 data = get_review()
+review_data = [int(num) for num in data]
+update_review_worksheet(review_data)
