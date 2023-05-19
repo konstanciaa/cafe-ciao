@@ -11,11 +11,10 @@ SCOPE = [
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET_C = GSPREAD_CLIENT.open('cafe-ciao')
-SHEET_R = GSPREAD_CLIENT.open('cafe-ciao-review')
+SHEET = GSPREAD_CLIENT.open('cafe-ciao')
 
-review = SHEET_C.worksheet('review')
-improve = SHEET_R.worksheet('improve')
+review = SHEET.worksheet('review')
+improve = SHEET.worksheet('improve')
 
 data = review.get_all_values()
 
@@ -83,7 +82,7 @@ def update_review_worksheet(data):
     Update review worksheet, add new row with the list data provided.
     Print average review point.
     """
-    review_worksheet = SHEET_C.worksheet("review")
+    review_worksheet = SHEET.worksheet("review")
     review_worksheet.append_row(data)
     # 3rd screen
     average = mean(data)
@@ -91,6 +90,27 @@ def update_review_worksheet(data):
     print("Thank you!")
     
     return round(average, 1)
+
+
+def ask_recommendations(data):
+    """
+    Get user's recommendations asking another question.
+    Gets text input.
+    Appends average review point and recommendations to "improve" sheet.
+    """
+    # 4th screen
+    print("We'll be happy if you share with us your thoughts on what we can improve ;)")
+    yes_no = input("Please type 'yes' if you want to give us some recommendations\nor type 'no' if you want to finish and exit the program:\n")
+    if yes_no == "yes":
+        # 5th screen
+        recommendations = input("Please share with us your tips on what we can improve:\n")
+    else:
+        # 5th screen
+        print("Thank for your time. We hope to see you again!")
+
+    improve_worksheet = SHEET.worksheet("improve")
+    insertRow = [data, recommendations]
+    improve_worksheet.append_row(insertRow)
 
         
 def main():
@@ -101,7 +121,7 @@ def main():
     data = get_review()
     review_data = [int(num) for num in data]
     average_review = update_review_worksheet(review_data)
-    # new_function(average_review)
+    ask_recommendations(average_review)
 
 
 main()
