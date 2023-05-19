@@ -23,6 +23,10 @@ data = review.get_all_values()
 
 
 def print_welcome():
+    """
+    Prints welcoming message
+    Clears the first screen
+    """
     # 1st screen
     print("Thank you for visiting cafe 'Ciao'\n")
     print("Please take a few moments to leave us your review.")
@@ -86,8 +90,9 @@ def validate_data(value):
 
 def update_review_worksheet(data):
     """
-    Update review worksheet, add new row with the list data provided.
-    Print average review point.
+    Updates review worksheet, add new row with the list data provided.
+    Prints average review point.
+    Clears the screen
     """
     review_worksheet = SHEET.worksheet("review")
     review_worksheet.append_row(data)
@@ -137,9 +142,7 @@ def ask_recommendations(data):
         insertRow = [data]
         improve_worksheet.append_row(insertRow)
 
-
-
-        
+       
 def main():
     """
     Run all program functions
