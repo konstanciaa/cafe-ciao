@@ -133,7 +133,7 @@ def ask_recommendations(data):
         improve_worksheet = SHEET.worksheet("improve")
         insertRow = [data, recommendations]
         improve_worksheet.append_row(insertRow)
-    else:
+    elif yes_no == "no":
         # 5th screen
         time.sleep(1)
         os.system("clear")
@@ -141,6 +141,11 @@ def ask_recommendations(data):
         improve_worksheet = SHEET.worksheet("improve")
         insertRow = [data]
         improve_worksheet.append_row(insertRow)
+    else:
+        print(f"Invalid input: {yes_no}. Please type 'yes' or 'no'")
+        time.sleep(3)
+        os.system("clear")
+        ask_recommendations(data)
 
        
 def main():
