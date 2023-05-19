@@ -31,7 +31,7 @@ def print_welcome():
     print("Thank you for visiting cafe 'Ciao'\n")
     print("Please take a few moments to leave us your review.")
     print("It will help us to improve our service.\n")
-    for i in range(6,0,-1):
+    for i in range(5,0,-1):
         print(f"{i}", end="\r", flush=True)
         time.sleep(1)
     os.system("clear")
@@ -100,7 +100,7 @@ def update_review_worksheet(data):
     average = mean(data)
     print(f"Your review: {round(average, 1)}")
     print("Thank you!")
-    for i in range(3,0,-1):
+    for i in range(2,0,-1):
         print(f"{i}", end="\r", flush=True)
         time.sleep(1)
     os.system("clear")
@@ -127,8 +127,8 @@ def ask_recommendations(data):
         time.sleep(1)
         os.system("clear")
         print("Thank you very much!")
-        print(f"We'll take your recommendation: '{recommendations}' into account.")
-        print("We hope to see you again!")
+        print(f"We'll take your recommendation '{recommendations}' into account.")
+        print("We hope to see you again!\n")
         
         improve_worksheet = SHEET.worksheet("improve")
         insertRow = [data, recommendations]
@@ -137,7 +137,7 @@ def ask_recommendations(data):
         # 5th screen
         time.sleep(1)
         os.system("clear")
-        print("Thank for your time. We hope to see you again!")
+        print("Thank for your time. We hope to see you again!\n")
         improve_worksheet = SHEET.worksheet("improve")
         insertRow = [data]
         improve_worksheet.append_row(insertRow)
@@ -147,7 +147,66 @@ def ask_recommendations(data):
         os.system("clear")
         ask_recommendations(data)
 
-       
+    print("Analysing our performance for the last five visitors...\n")
+
+
+# this code is taken from Love Sandwiches
+def get_last_5_entries_review():
+    """Collects collumns of data from review worksheet,
+    collecting the last 5 entries for each kind of service,
+    and returns the data as a list of lists
+    """
+    review = SHEET.worksheet("review")
+
+    columns = []
+    for ind in range(1, 5):
+        column = review.col_values(ind)
+        columns.append(column[-5:])
+    
+    return columns
+
+
+# this code is taken from Love Sandwiches
+def calculate_performance(data):
+    """
+    Calculate average review for each type of service
+    """
+    average_performance = []
+
+    for column in data:
+        int_column = [int(num) for num in column]
+        average = sum(int_column) / len(int_column)
+        average_performance.append(round(average, 2))
+
+    return average_performance
+
+
+def analyse_performance(data):
+    """
+    Creates dictionary from the list of average performance.
+    Keys are headings in review worksheet.
+    Iterates through dictionary to find the smallest and the biggest number.
+    Prints out the smallest number as the poorest performance and its key.
+    Prints out the biggest number as the best performance and its key.
+    """
+    review = SHEET.worksheet("review").get_all_values()
+    keys = review[0]
+    performance = {keys[i]: data[i] for i in range(len(keys))}
+
+    print(performance)
+    print("")
+
+    for key, value in performance.items():
+        poor_performance = min(performance.values())
+        best_performance = max(performance.values())
+        if poor_performance == value:
+            print(f"The poorest performance is: {key}.")
+            print(f"We're going to improve our {key}.\n")
+
+        if best_performance == value:
+            print(f"The best performance is: {key}.")
+    
+
 def main():
     """
     Run all program functions
@@ -157,6 +216,11 @@ def main():
     review_data = [int(num) for num in data]
     average_review = update_review_worksheet(review_data)
     ask_recommendations(average_review)
+    columns_list = get_last_5_entries_review()
+    average_performance = calculate_performance(columns_list)
+    analyse_performance(average_performance)
+    
+
 
 
 main()
