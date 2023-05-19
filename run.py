@@ -1,6 +1,9 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from statistics import mean
+import os
+import time
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -24,6 +27,10 @@ def print_welcome():
     print("Thank you for visiting cafe 'Ciao'\n")
     print("Please take a few moments to leave us your review.")
     print("It will help us to improve our service.\n")
+    for i in range(6,0,-1):
+        print(f"{i}", end="\r", flush=True)
+        time.sleep(1)
+    os.system("clear")
 
 
 def get_review():
@@ -88,6 +95,10 @@ def update_review_worksheet(data):
     average = mean(data)
     print(f"Your review: {round(average, 1)}")
     print("Thank you!")
+    for i in range(3,0,-1):
+        print(f"{i}", end="\r", flush=True)
+        time.sleep(1)
+    os.system("clear")
     
     return round(average, 1)
 
@@ -103,14 +114,30 @@ def ask_recommendations(data):
     yes_no = input("Please type 'yes' if you want to give us some recommendations\nor type 'no' if you want to finish and exit the program:\n")
     if yes_no == "yes":
         # 5th screen
+        time.sleep(1)
+        os.system("clear")
         recommendations = input("Please share with us your tips on what we can improve:\n")
+        
+        # 6th screen
+        time.sleep(1)
+        os.system("clear")
+        print("Thank you very much!")
+        print(f"We'll take your recommendation: '{recommendations}' into account.")
+        print("We hope to see you again!")
+        
+        improve_worksheet = SHEET.worksheet("improve")
+        insertRow = [data, recommendations]
+        improve_worksheet.append_row(insertRow)
     else:
         # 5th screen
+        time.sleep(1)
+        os.system("clear")
         print("Thank for your time. We hope to see you again!")
+        improve_worksheet = SHEET.worksheet("improve")
+        insertRow = [data]
+        improve_worksheet.append_row(insertRow)
 
-    improve_worksheet = SHEET.worksheet("improve")
-    insertRow = [data, recommendations]
-    improve_worksheet.append_row(insertRow)
+
 
         
 def main():
