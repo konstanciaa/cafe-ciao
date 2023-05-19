@@ -20,16 +20,25 @@ improve = SHEET_R.worksheet('improve')
 data = review.get_all_values()
 
 
+def print_welcome():
+    # 1st screen
+    print("Thank you for visiting cafe 'Ciao'\n")
+    print("Please take a few moments to leave us your review.")
+    print("It will help us to improve our service.\n")
+
+
 def get_review():
     """
-    Get user's review asking three questions.
+    Get user's review asking four questions.
     Get a point from 1 to 5 for each question.
     1 is bad, 5 is good.
-    Return list of integers
+
+    Returns:
+        a list of integers
     """
     # 2nd screen
     while True:
-        print("Answer three questions below:")
+        print("Answer four questions below:")
         print("For each question give a point from 1 to 5, where 1 is bad and 5 is good\n")
 
         data_str_food = input("How tasty was the food?\n")
@@ -42,22 +51,21 @@ def get_review():
                     if validate_data(data_str_vibe):
                         break
 
-            
-    review_data = []
-    review_data = [data_str_food, data_str_service, data_str_clean, data_str_vibe]
-    
-    return review_data
-
-
+    return [data_str_food, data_str_service, data_str_clean, data_str_vibe]
 
 
 def validate_data(value):
     """
     Inside the try, converts all string values into integers.
     Raises ValueError if strings cannot be converted into int,
-    or if the given point higher than 5.
-    """
+    or if the given point is higher than 5.
 
+    Args:
+        value (str) the value to validate
+
+    Returns:
+        True if valid, False otherwise
+    """
     try:
         if int(value) > 5:
             raise ValueError(
@@ -72,34 +80,28 @@ def validate_data(value):
 
 def update_review_worksheet(data):
     """
-    Update review worksheet, add new row with the list data provided
+    Update review worksheet, add new row with the list data provided.
+    Print average review point.
     """
     review_worksheet = SHEET_C.worksheet("review")
     review_worksheet.append_row(data)
     # 3rd screen
     average = mean(data)
-    print(f"Your review: {round(average,1)}")
+    print(f"Your review: {round(average, 1)}")
     print("Thank you!")
     
-    return round(average,1)
-
+    return round(average, 1)
 
         
-            
-
 def main():
     """
     Run all program functions
     """
+    print_welcome()
     data = get_review()
     review_data = [int(num) for num in data]
-    update_review_worksheet(review_data)
-    # average_review = update_review_worksheet()
+    average_review = update_review_worksheet(review_data)
+    # new_function(average_review)
 
 
-
-# 1st screen
-print("Thank you for visiting cafe 'Ciao'\n")
-print("Please take a few moments to leave us your review.")
-print("It will help us to improve our service.\n")
 main()
