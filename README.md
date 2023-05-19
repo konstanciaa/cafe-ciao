@@ -1,32 +1,28 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Cafe "Ciao"
 
-Welcome,
+Cafe "Ciao" is a Pyhton termninal app, which runs in the Code Institute mock terminal on Heroku.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+Users can leave their review after visiting the cafe. The have to answer four questions by giving points from 1 to 5, where 1 is bad and 5 is good. The app saves users review and recommendations into Google Spreadsheet. It also analyses performance for the last five entries.
 
-## Reminders
+View the live project here.
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+(Am I responsive pictures)
 
-## Creating the Heroku app
+## How to use it
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+## Features
 
-1. `heroku/python`
-2. `heroku/nodejs`
+## Future features
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## Deployment
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+## User stories
 
-Connect your GitHub repository and deploy as normal.
+## Technologies used
 
-## Constraints
+## Validation
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+## Flow chart
 
----
+## Credits
 
-Happy coding!

@@ -31,7 +31,7 @@ def print_welcome():
     print("Thank you for visiting cafe 'Ciao'\n")
     print("Please take a few moments to leave us your review.")
     print("It will help us to improve our service.\n")
-    for i in range(5,0,-1):
+    for i in range(5, 0, -1):
         print(f"{i}", end="\r", flush=True)
         time.sleep(1)
     os.system("clear")
@@ -49,7 +49,8 @@ def get_review():
     # 2nd screen
     while True:
         print("Answer four questions below:")
-        print("For each question give a point from 1 to 5, where 1 is bad and 5 is good\n")
+        print("For each question give a point from 1 to 5,")
+        print("where 1 is bad and 5 is good\n")
 
         data_str_food = input("How tasty was the food?\n")
         if validate_data(data_str_food):
@@ -84,9 +85,9 @@ def validate_data(value):
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
         return False
-    
+
     return True
-    
+
 
 def update_review_worksheet(data):
     """
@@ -100,11 +101,11 @@ def update_review_worksheet(data):
     average = mean(data)
     print(f"Your review: {round(average, 1)}")
     print("Thank you!")
-    for i in range(2,0,-1):
+    for i in range(2, 0, -1):
         print(f"{i}", end="\r", flush=True)
         time.sleep(1)
     os.system("clear")
-    
+
     return round(average, 1)
 
 
@@ -115,21 +116,23 @@ def ask_recommendations(data):
     Appends average review point and recommendations to "improve" sheet.
     """
     # 4th screen
-    print("We'll be happy if you share with us your thoughts on what we can improve ;)")
-    yes_no = input("Please type 'yes' if you want to give us some recommendations\nor type 'no' if you want to finish and exit the program:\n")
+    print("We'll be happy if you share with us your thoughts")
+    print("on what we can improve ;)\n")
+    print("Please type 'yes' if you want to give us some recommendations")
+    yes_no = input("or type 'no' if you want to finish and exit the program:\n")
     if yes_no == "yes":
         # 5th screen
         time.sleep(1)
         os.system("clear")
         recommendations = input("Please share with us your tips on what we can improve:\n")
-        
+
         # 6th screen
         time.sleep(1)
         os.system("clear")
         print("Thank you very much!")
         print(f"We'll take your recommendation '{recommendations}' into account.")
         print("We hope to see you again!\n")
-        
+
         improve_worksheet = SHEET.worksheet("improve")
         insertRow = [data, recommendations]
         improve_worksheet.append_row(insertRow)
@@ -162,7 +165,7 @@ def get_last_5_entries_review():
     for ind in range(1, 5):
         column = review.col_values(ind)
         columns.append(column[-5:])
-    
+
     return columns
 
 
@@ -205,7 +208,7 @@ def analyse_performance(data):
 
         if best_performance == value:
             print(f"The best performance is: {key}.")
-    
+
 
 def main():
     """
@@ -219,6 +222,6 @@ def main():
     columns_list = get_last_5_entries_review()
     average_performance = calculate_performance(columns_list)
     analyse_performance(average_performance)
-    
+
 
 main()
