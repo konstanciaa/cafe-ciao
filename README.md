@@ -15,21 +15,27 @@ Users can leave their review after visiting the cafe. The have to answer four qu
 
 ## Features
 - Users are welcomed to leave a review after visiting the cafe "Ciao"
+
 ![a screenshot of the first screen](/docs/welcoming.jpeg)
 
 - On the next screen users can read short instructions on how to answer the questions.
+
 ![instructions](/docs/instructions.jpeg)
 
 - After a user answers the first question, the second question appears, and so on.
+
 ![four questions](/docs/four-questions.jpeg)
 
 - If users type a letter or a number which is hihger than 5, they see a message which informs them about the mistake and reloads the question.
+
 ![invalid input number](/docs/invalid-input-number.jpeg)
 
 - After users answered all four questions, they can see their average review score.
+
 ![average review score](/docs/average-score.jpeg)
 
 - Users are invited to answer one more question, where they can write their recommendations on improvement. If a user is willing to give recommendations, they can type "yes" and proceed to the next screen.
+
 ![question about recommendations](/docs/recommends-question.jpeg)
 
 - If users made a spelling mistake when typing "yes" or "no", they are informed with the short message and asked to enter their answer again.
@@ -37,23 +43,41 @@ Users can leave their review after visiting the cafe. The have to answer four qu
 ![spelling mistake message](/docs/spelling-mistake.jpeg)
 
 - Here users can freely type their recommendations.
+
 ![recommendations](/docs/recommendations.jpeg)
 
 - On the last screen, users can see that their recommendation is taken into account. It was saved to a separate worksheet with the other recommendations. 
 - Also users are able to see the analysis on performance and areas for improvement.
+
 ![last screen with feedback and analysis](/docs/feedback.jpeg)
 
 - If users choose not to give recommendations, they may type "no" and see the following screen with the analysis.
+
 ![last screen with analysis without recommendations from the user](/docs/without-recommends.jpeg)
 
 
 ## Future features
 
+- Analyze performance since opening
+- Add more questions to the survey
+
 ## Deployment
+This project was deployed using Code Institute's mock terminal for Heroku.
+
+Steps for deployment:
+- Fork or clone this repository
+- Create a new Heroku app
+- Set the buildpacks to **Python** and **NodeJS** in that order
+- Link the Heroku app to the repository
+- Click on **Deploy**
 
 ## User stories
 
 ## Technologies used
+- Python
+- External libraries: gspread, statistics, os, time
+
+## Testing
 
 ## Validation
 No errors were returned from [CI Python Linter](https://pep8ci.herokuapp.com/)
@@ -62,4 +86,7 @@ No errors were returned from [CI Python Linter](https://pep8ci.herokuapp.com/)
 ## Flow chart
 
 ## Credits
+- Code Institute for the deployment terminal
+- The code to clear screen was taken from [GeeksforGeeks](https://www.geeksforgeeks.org/clear-screen-python/)
+- The code for displaying countdown in terminal was taken from [this post on Stackoverflow](https://stackoverflow.com/questions/17220128/display-a-countdown-for-the-python-sleep-function)
 
