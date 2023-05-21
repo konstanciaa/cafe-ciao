@@ -44,7 +44,7 @@ Users can leave their review after visiting the cafe. The have to answer four qu
 ![last screen with feedback and analysis](/docs/feedback.jpeg)
 
 - If users choose not to give recommendations, they may type "no" and see the following screen with the analysis.
-
+![last screen with analysis without recommendations from the user](/docs/without-recommends.jpeg)
 
 
 ## Future features
