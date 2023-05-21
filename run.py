@@ -140,7 +140,7 @@ def ask_recommendations(data):
         # 5th screen
         time.sleep(1)
         os.system("clear")
-        print("Thank for your time. We hope to see you again!\n")
+        print("Thank you for your time. We hope to see you again!\n")
         improve_worksheet = SHEET.worksheet("improve")
         insertRow = [data]
         improve_worksheet.append_row(insertRow)
