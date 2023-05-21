@@ -72,15 +72,25 @@ Steps for deployment:
 - Click on **Deploy**
 
 ## User stories
+1. As a User, I want to understand the purpose of the web application.
+2. As a User, I want to see clearly written instructions which explain what to do.
+3. As a User, 
 
 ## Technologies used
 - Python
 - External libraries: gspread, statistics, os, time
 
 ## Testing
+| **To test** | **Expected Result** |
+| -------------------------------|----------------------------------|
+|Open the app in different browsers. | The app works properly in different browsers: Chrome, Safari.
+|Open it on a tablet and on a mobile phone. | It's responsive and looks good on a range of devices.
+|Try to enter a letter or a number higher than 5, when answering first four questions. | The app shows error message and asks the question again.
+|Try to answer all questions. | All quetsions work properly.
 
-## Validation
+## Validator Testing
 No errors were returned from [CI Python Linter](https://pep8ci.herokuapp.com/)
+
 ![a screenshot from Python Linter](/docs/validation.jpeg)
 
 ## Flow chart
