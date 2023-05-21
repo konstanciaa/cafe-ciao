@@ -39,12 +39,12 @@ def print_welcome():
 
 def get_review():
     """
-    Get user's review asking four questions.
-    Get a point from 1 to 5 for each question.
+    Gets user's review asking four questions.
+    Gets a point from 1 to 5 for each question.
     1 is bad, 5 is good.
 
     Returns:
-        a list of integers
+        a list of strings
     """
     # 2nd screen
     while True:
@@ -91,7 +91,7 @@ def validate_data(value):
 
 def update_review_worksheet(data):
     """
-    Updates review worksheet, add new row with the list data provided.
+    Updates review worksheet, adds new row with the list data provided.
     Prints average review point.
     Clears the screen
     """
@@ -111,30 +111,30 @@ def update_review_worksheet(data):
 
 def ask_recommendations(data):
     """
-    Get user's recommendations asking another question.
+    Gets user's recommendations asking another question.
     Gets text input.
     Appends average review point and recommendations to "improve" sheet.
     """
     # 4th screen
     print("We'll be happy if you share with us your thoughts")
     print("on what we can improve ;)\n")
-    print("Please type 'yes' if you want to give us some recommendations")
-    yes_no = input("or type 'no' if you want to finish and exit the program:\n")
+    print("Please type 'yes' if you want to give us some recommendations or")
+    yes_no = input("type 'no' if you want to finish and exit the program:\n")
     if yes_no == "yes":
         # 5th screen
         time.sleep(1)
         os.system("clear")
-        recommendations = input("Please share with us your tips on what we can improve:\n")
+        recommends = input("Please share with us your tips:\n")
 
         # 6th screen
         time.sleep(1)
         os.system("clear")
         print("Thank you very much!")
-        print(f"We'll take your recommendation '{recommendations}' into account.")
+        print(f"We'll take your recommendation '{recommends}' into account.")
         print("We hope to see you again!\n")
 
         improve_worksheet = SHEET.worksheet("improve")
-        insertRow = [data, recommendations]
+        insertRow = [data, recommends]
         improve_worksheet.append_row(insertRow)
     elif yes_no == "no":
         # 5th screen
@@ -153,7 +153,7 @@ def ask_recommendations(data):
     print("Analysing our performance for the last five visitors...\n")
 
 
-# this code is taken from Love Sandwiches
+# code for this function is taken from the Love Sandwiches project
 def get_last_5_entries_review():
     """Collects collumns of data from review worksheet,
     collecting the last 5 entries for each kind of service,
@@ -169,10 +169,10 @@ def get_last_5_entries_review():
     return columns
 
 
-# this code is taken from Love Sandwiches
+# code for this function is taken from the Love Sandwiches project
 def calculate_performance(data):
     """
-    Calculate average review for each type of service
+    Calculates average review for each type of service
     """
     average_performance = []
 
@@ -189,8 +189,7 @@ def analyse_performance(data):
     Creates dictionary from the list of average performance.
     Keys are headings in review worksheet.
     Iterates through dictionary to find the smallest and the biggest number.
-    Prints out the smallest number as the poorest performance and its key.
-    Prints out the biggest number as the best performance and its key.
+    Prints out poor and good performance according to the result.
     """
     review = SHEET.worksheet("review").get_all_values()
     keys = review[0]
@@ -203,11 +202,11 @@ def analyse_performance(data):
         poor_performance = min(performance.values())
         best_performance = max(performance.values())
         if poor_performance == value:
-            print(f"The poorest performance is: {key}.")
+            print(f"Poor performance: {key}.")
             print(f"We're going to improve our {key}.\n")
 
         if best_performance == value:
-            print(f"The best performance is: {key}.")
+            print(f"Good performance: {key}.")
 
 
 def main():
