@@ -82,8 +82,8 @@ def validate_data(value):
             raise ValueError(
                 f"Points from 1 to 5 required, you gave {int(value)}"
             )
-    except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
+    except ValueError:
+        print(f"Invalid data: please enter a number between 1 and 5.\n")
         return False
 
     return True
@@ -195,17 +195,17 @@ def analyse_performance(data):
     keys = review[0]
     performance = {keys[i]: data[i] for i in range(len(keys))}
 
-    print(performance)
+    print("\n".join("{}: {}".format(k, v) for k, v in performance.items()))
     print("")
 
     for key, value in performance.items():
         poor_performance = min(performance.values())
-        best_performance = max(performance.values())
+        good_performance = max(performance.values())
         if poor_performance == value:
             print(f"Poor performance: {key}.")
             print(f"We're going to improve our {key}.\n")
 
-        if best_performance == value:
+        if good_performance == value:
             print(f"Good performance: {key}.")
 
 

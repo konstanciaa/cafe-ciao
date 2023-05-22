@@ -1,12 +1,23 @@
 # Cafe "Ciao"
 
-Cafe "Ciao" is a Pyhton termninal app, which runs in the Code Institute mock terminal on Heroku.
+Cafe "Ciao" is a Python terminal app, which runs in the Code Institute mock terminal on Heroku.
 
-Users can leave their review after visiting the cafe. The have to answer four questions by giving points from 1 to 5, where 1 is bad and 5 is good. The app saves users review and recommendations into Google Spreadsheet. It also analyses performance for the last five entries and shows areas for imrpovement.
+Users can leave their review after visiting the cafe. They have to answer four questions by giving points between 1 and 5, where 1 is bad and 5 is good. The app saves users review and recommendations into Google Sheets. It also analyses performance for the last five entries and shows areas for improvement.
 
 [View the live project here.](https://cafe-ciao.herokuapp.com/)
 
+[View Google Sheets here.](https://docs.google.com/spreadsheets/d/1RT2LF3gX1xoE9mtGZFy3lDKK0C0FdnSc-U7zfKONYbg/edit?usp=sharing)
+
 ![Am I responsive - screenshot](/docs/responsive.jpeg)
+
+## User Stories
+1. As a User, I want to understand the purpose of the web application.
+2. As a User, I want to see clearly written instructions which explain what to do.
+3. As a User, I want to be able to leave a review.
+4. As a User, I want to be sure that my review is saved.
+5. As a User, I want to be able to write my recommendations.
+6. As a User, I want to be sure that my recommendations are taken into account.
+7. As a User, I want to see and clear understand overall performance of the cafe.
 
 ## How to use it
 - Users answer four questions, by giving a point from 1 to 5, where 1 is bad and 5 is good.
@@ -71,9 +82,17 @@ Steps for deployment:
 - Link the Heroku app to the repository
 - Click on **Deploy**
 
-## User Experience
-1. As a User, I want to understand the purpose of the web application.
-2. As a User, I want to see clearly written instructions which explain what to do.
+## Development
+Any contributions are greatly appreciated. If you have a suggestion that would make this website better, please fork the repo and create a pull request.
+
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/konstanciaa/cafe-ciao)
+2. At the top of the Repository on the right site of the page just above the "Settings" Button on the menu, locate the "Fork" Button.
+3. Fork the Project
+4. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+5. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+6. Push to the Branch (`git push origin feature/AmazingFeature`)
+7. Open a Pull Request
+
 
 ## Technologies used
 - Python
@@ -87,12 +106,27 @@ Steps for deployment:
 |Try to enter a letter or a number higher than 5, when answering first four questions. | The app shows error message and asks the question again.
 |Try to answer all questions. | All quetsions work properly.
 
-## Testing User Stories from User Experience Section
+## Testing User Stories
 1. As a User, I want to understand the purpose of the web application.
 - *Upon running the program, users are automatically greeted with a welcoming message, which gives clear idea of what it is about.*
 
 2. As a User, I want to see clearly written instructions which explain what to do.
 - *The second screen, which opens automatically after 5 seconds, contains short and clear instructions on how to answer questions in the survey.*
+
+3. As a User, I want to be able to leave a review.
+- *After users get acquainted with the instructions, they may give points between 1 and 5 to each question.*
+
+4. As a User, I want to be sure that my review is saved.
+- *After giving points to all four questions, users can see their average score review.*
+
+5. As a User, I want to be able to write my recommendations.
+- *On the next screen users are invited to share their recommendations and tips.*
+
+6. As a User, I want to be sure that my recommendations are taken into account.
+- *On the last screen users are assured that their specific recomendation is taken into account.*
+
+7. As a User, I want to see and clear understand overall performance of the cafe.
+- *At the last screen, users can see analysis of cafe's performance for the last five visitors and areas for improvement.*
 
 ## Validator Testing
 No errors were returned from [CI Python Linter](https://pep8ci.herokuapp.com/)
