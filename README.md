@@ -71,10 +71,9 @@ Steps for deployment:
 - Link the Heroku app to the repository
 - Click on **Deploy**
 
-## User stories
+## User Experience
 1. As a User, I want to understand the purpose of the web application.
 2. As a User, I want to see clearly written instructions which explain what to do.
-3. As a User, 
 
 ## Technologies used
 - Python
@@ -88,12 +87,18 @@ Steps for deployment:
 |Try to enter a letter or a number higher than 5, when answering first four questions. | The app shows error message and asks the question again.
 |Try to answer all questions. | All quetsions work properly.
 
+## Testing User Stories from User Experience Section
+1. As a User, I want to understand the purpose of the web application.
+- *Upon running the program, users are automatically greeted with a welcoming message, which gives clear idea of what it is about.*
+
+2. As a User, I want to see clearly written instructions which explain what to do.
+- *The second screen, which opens automatically after 5 seconds, contains short and clear instructions on how to answer questions in the survey.*
+
 ## Validator Testing
 No errors were returned from [CI Python Linter](https://pep8ci.herokuapp.com/)
 
 ![a screenshot from Python Linter](/docs/validation.jpeg)
 
-## Flow chart
 
 ## Credits
 - Code Institute for the deployment terminal
