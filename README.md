@@ -104,7 +104,7 @@ Any contributions are greatly appreciated. If you have a suggestion that would m
 |Open the app in different browsers. | The app works properly in different browsers: Chrome, Safari.
 |Open it on a tablet and on a mobile phone. | It's responsive and looks good on a range of devices.
 |Try to enter a letter or a number higher than 5, when answering first four questions. | The app shows error message and asks the question again.
-|Try to answer all questions. | All quetsions work properly.
+|Try to answer all questions. | All questions work properly.
 
 ## Testing User Stories
 1. As a User, I want to understand the purpose of the web application.
